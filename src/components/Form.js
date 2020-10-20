@@ -7,6 +7,12 @@ const Form = ({ input, setInput, todos, setTodos, setStatus }) => {
 
   const submit = (e) => {
     e.preventDefault();
+
+    if (!input) {
+      alert('[ERROR] EMPTY TEXT');
+      return;
+    }
+
     setTodos([
       ...todos,
       {
