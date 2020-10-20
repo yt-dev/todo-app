@@ -14,7 +14,7 @@ const Todo = ({ todo, todos, setTodos }) => {
   };
 
   return (
-    <div className='todo'>
+    <div className='todo' title={`Created at: ${todo.createdAt}`}>
       <li className={`todo-item ${todo.done && 'completed'}`}>{todo.title}</li>
       <button onClick={completedTodo} className='complete-btn'>
         <i className='fas fa-check'></i>
