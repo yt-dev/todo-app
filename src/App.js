@@ -10,6 +10,14 @@ const App = () => {
   const [status, setStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState([]);
 
+  useEffect(() => {
+    if (localStorage.getItem('todos') === null) {
+      localStorage.setItem('todos', JSON.stringify([]));
+    } else {
+      setTodos(JSON.parse(localStorage.getItem('todos')));
+    }
+  }, []);
+
   // FILTER FUNCTION
   const handleFilter = useCallback(() => {
     switch (status) {
@@ -22,6 +30,7 @@ const App = () => {
       default:
         setFilteredTodos(todos);
     }
+    localStorage.setItem('todos', JSON.stringify(todos));
   }, [status, todos]);
 
   useEffect(() => {
